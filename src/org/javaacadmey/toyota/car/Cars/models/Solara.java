@@ -6,8 +6,8 @@ public class Solara extends Cabriolet {
     private static final boolean HAS_FRIDGE = true;
     private static final int wheelDiameter = 16;
 
-    public Solara(boolean roofOpen) {
-        super(roofOpen);
+    public Solara(boolean roofOpen, boolean hasCruise) {
+        super(roofOpen, hasCruise);
     }
 
     public void freezeDrink() {

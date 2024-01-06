@@ -10,6 +10,6 @@ public class Runner {
         Camry camry = new Camry(true);
         Dyna dyna = new Dyna(131);
         Hiance hiance = new Hiance(123123);
-        Solara solara = new Solara(true);
+        Solara solara = new Solara(true, true);
     }
 }
