@@ -1,13 +1,14 @@
-package org.javaacadmey.toyota.car.Cars;
+package org.javaacadmey.toyota.car.cars;
 
-import org.javaacadmey.toyota.car.Cars.components.*;
-import org.javaacadmey.toyota.car.Cars.exceptions.StartCarException;
+import org.javaacadmey.toyota.car.cars.components.*;
+import org.javaacadmey.toyota.car.exeptions.StartCarException;
 
 public abstract class Car {
     private String color;
     private int maxSpeed;
-    private Transmission transmission;
+    private String transmission;
     private boolean isMoving;
+    private int price;
 
     private Wheel[] wheels = new Wheel[4];
     private GasTank gasTank;
@@ -16,9 +17,9 @@ public abstract class Car {
     private Headlights headlights;
 
     public Car(String color, int maxSpeed,
-               Transmission transmission, boolean isMoving,
+               String transmission, boolean isMoving,
                Wheel[] wheels, GasTank gasTank,
-               Engine engine, Electrics electrics, Headlights headlights) {
+               Engine engine, Electrics electrics, Headlights headlights, int price) {
         this.color = color;
         this.maxSpeed = maxSpeed;
         this.transmission = transmission;
@@ -28,9 +29,10 @@ public abstract class Car {
         this.engine = engine;
         this.electrics = electrics;
         this.headlights = headlights;
+        this.price = price;
     }
 
-    private void startMoving() throws StartCarException {
+    public void startMoving() {
         try {
             checkComponents();
         } catch (StartCarException e) {
@@ -38,13 +40,15 @@ public abstract class Car {
         }
 
         this.isMoving = true;
+        System.out.println("Тачка едет.");
     }
 
-    private void stopMoving() {
+    public void stopMoving() {
         this.isMoving = false;
+        System.out.println("Тачка не едет.");
     }
 
-    private void turnHeadlights() {
+    public void turnHeadlights() {
         System.out.println("Фары включены.");
     }
 

@@ -1,7 +1,7 @@
-package org.javaacadmey.toyota.car.Cars.components;
+package org.javaacadmey.toyota.car.cars.components;
 
 public class GasTank {
-    private int gasQty;
+    private int gasQty = 0;
 
     public int getGasQty() {
         return gasQty;

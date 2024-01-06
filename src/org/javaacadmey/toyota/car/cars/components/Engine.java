@@ -1,7 +1,7 @@
-package org.javaacadmey.toyota.car.Cars.components;
+package org.javaacadmey.toyota.car.cars.components;
 
 public class Engine {
-    private boolean isWorked;
+    private boolean isWorked = true;
 
     public boolean isWorked() {
         return isWorked;

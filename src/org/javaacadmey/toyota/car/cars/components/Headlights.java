@@ -1,4 +1,4 @@
-package org.javaacadmey.toyota.car.Cars.components;
+package org.javaacadmey.toyota.car.cars.components;
 
 public class Headlights {
     private boolean isWorked;
