@@ -1,27 +1,32 @@
 package org.javaacadmey.toyota.car.factory;
 
+import org.javaacadmey.toyota.car.Countries;
 import org.javaacadmey.toyota.car.cars.components.*;
 
 public class Factory {
-    String Country;
+    Countries country;
 
-    protected Electrics createElectrics() {
+    public Factory(Countries country) {
+        this.country = country;
+    }
+
+    public static Electrics createElectrics() {
         return new Electrics();
     }
 
-    protected Engine createEngine() {
+    public static  Engine createEngine() {
         return new Engine();
     }
 
-    protected GasTank createGasTank() {
+    public static  GasTank createGasTank() {
         return new GasTank();
     }
 
-    protected Headlights createHeadlights() {
+    public static  Headlights createHeadlights() {
         return new Headlights();
     }
 
-    protected Wheel createWheel(int wheelDiameter) {
+    public static  Wheel createWheel(int wheelDiameter) {
         return new Wheel(wheelDiameter);
     }
 }
