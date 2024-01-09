@@ -7,6 +7,8 @@ import org.javaacadmey.toyota.car.cars.models.Hiance;
 import org.javaacadmey.toyota.car.cars.models.Solara;
 import org.javaacadmey.toyota.car.exeptions.NoCarAvailableException;
 
+import java.util.Arrays;
+
 public class Warehouse {
     private int freeSpace = 1000;
     private int carQty = 0;
@@ -44,11 +46,18 @@ public class Warehouse {
     }
 
     public void addSolara(Solara solara) {
-        Solara[] newSolara = new Solara[this.solaras.length + 1];
-        System.arraycopy(this.solaras, 0, newSolara, 0, this.solaras.length);
-        newSolara[newSolara.length - 1] = solara;
-        this.solaras = newSolara;
+//        Solara[] newSolara = (Solara[]) addCars(this.solaras, this.solaras.length + 1);
+//        Car[] newSolara1 = addCars(this.solaras, this.solaras.length + 1);
+        this.solaras = addCars(this.solaras, this.solaras.length + 1);
+//        Solara[] newSolara = new Solara[this.solaras.length + 1];
+//        System.arraycopy(this.solaras, 0, newSolara, 0, this.solaras.length);
+        newSolara1[newSolara1.length - 1] = solara;
+        this.solaras = newSolara1;
         increaseCarQty();
+    }
+
+    private Car[] addCars(Car[] cars, int carsCount) {
+        return Arrays.copyOf(cars, carsCount);
     }
 
     public Camry getCamry() throws NoCarAvailableException {
@@ -146,4 +155,7 @@ public class Warehouse {
         return this.solaras.length;
     }
 
+    public Solara[] getSolaras() {
+        return solaras;
+    }
 }
