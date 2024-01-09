@@ -49,72 +49,52 @@ public class Warehouse {
         return Arrays.copyOf(cars, carsCount);
     }
 
+    private Car[] decreaseArray(Car[] cars, int carsCount) {
+        return Arrays.copyOf(cars, carsCount);
+    }
+
     public Car getCamry() throws NoCarAvailableException {
         if (getCarsQty(this.camrys) != 0) {
             Car camry = this.camrys[camrysQty() - 1];
-            removeCamry(camrysQty() - 1);
+            this.camrys = decreaseArray(this.camrys, this.camrys.length - 1);
+            reduceCarQty();
             return camry;
         } else {
             throw new NoCarAvailableException("Нет Camry на складе.");
         }
     }
 
-    private void removeCamry(int carIndex) {
-        Camry[] newCamry = new Camry[carIndex];
-        System.arraycopy(this.camrys, 0, newCamry, 0, carIndex);
-        this.camrys = newCamry;
-        reduceCarQty();
-    }
-
     public Car getSolara() throws NoCarAvailableException {
         if (getCarsQty(this.solaras) != 0){
             Car solara = this.solaras[solarasQty() - 1];
-            removeSolara(solarasQty() - 1);
+            this.solaras = decreaseArray(this.solaras, this.solaras.length - 1);
+            reduceCarQty();
             return solara;
         } else {
             throw new NoCarAvailableException("Нет Solara на складе.");
         }
     }
 
-    private void removeSolara(int carIndex) {
-        Solara[] newSolaras = new Solara[carIndex];
-        System.arraycopy(this.solaras, 0, newSolaras, 0, carIndex);
-        this.solaras = newSolaras;
-        reduceCarQty();
-    }
-
     public Car getDyna() throws NoCarAvailableException {
         if (getCarsQty(this.dynas) != 0) {
             Car dyna = this.dynas[dynasQty() - 1];
-            removeDyna(dynasQty() - 1);
+            this.dynas = decreaseArray(this.dynas, this.dynas.length - 1);
+            reduceCarQty();
             return dyna;
         } else {
             throw new NoCarAvailableException("Нет Dyna на складе.");
         }
     }
 
-    private void removeDyna(int carIndex) {
-        Dyna[] newDynas = new Dyna[carIndex];
-        System.arraycopy(this.dynas, 0, newDynas, 0, carIndex);
-        this.dynas = newDynas;
-        reduceCarQty();
-    }
-
     public Car getHiance() throws NoCarAvailableException {
         if (getCarsQty(this.hiances) != 0) {
             Car hiance = this.hiances[hiancesQty() - 1];
-            removeHiance(hiancesQty() - 1);
+            this.hiances = decreaseArray(this.hiances, this.hiances.length - 1);
+            reduceCarQty();
             return hiance;
         } else {
             throw new NoCarAvailableException("Нет Hiance на складе.");
         }
-    }
-
-    private void removeHiance(int carIndex) {
-        Hiance[] newHiances = new Hiance[carIndex];
-        System.arraycopy(this.hiances, 0, newHiances, 0, carIndex);
-        this.hiances = newHiances;
-        reduceCarQty();
     }
 
     private void reduceCarQty() {

@@ -49,15 +49,16 @@ public class Runner {
         warehouse.addSolara(solara6);
         System.out.println(warehouse.solarasQty());
         warehouse.addSolara(solara7);
-        System.out.println(warehouse.solarasQty());
-        System.out.println(Arrays.toString(warehouse.getSolaras()));
+//        System.out.println(warehouse.solarasQty());
+//        System.out.println(Arrays.toString(warehouse.getSolaras()));
 
         Manager manager1 = new Manager();
         Customer customer1 = new Customer("Ivan", 30000);
         manager1.sellCar(customer1, warehouse);
 
-//        System.out.println(warehouse.solarasQty());
-//        warehouse.getSolara();
+        System.out.println(warehouse.solarasQty());
+        warehouse.getSolara();
+        System.out.println(warehouse.solarasQty());
 //        System.out.println(warehouse.solarasQty());
 //        warehouse.getSolara();
 //        System.out.println(warehouse.solarasQty());
