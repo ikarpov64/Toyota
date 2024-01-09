@@ -21,4 +21,17 @@ public enum Price {
     public int getCostPrice() {
         return costPrice;
     }
+
+    public static Price getMaxCarBySellPrice(int maxBudget) {
+        Price[] values = values();
+        Price maxCar = null;
+
+        for (Price car : values) {
+            if (car.getSellPrice() <= maxBudget &&
+                    (maxCar == null || car.getSellPrice() > maxCar.getSellPrice())) {
+                maxCar = car;
+            }
+        }
+        return maxCar;
+    }
 }

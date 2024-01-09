@@ -90,4 +90,7 @@ public abstract class Car {
         }
     }
 
+    public double getCost() {
+        return cost;
+    }
 }

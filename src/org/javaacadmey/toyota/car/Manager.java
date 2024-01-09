@@ -1,45 +1,58 @@
 package org.javaacadmey.toyota.car;
 
 import org.javaacadmey.toyota.car.cars.Car;
+import org.javaacadmey.toyota.car.cars.CarColor;
+import org.javaacadmey.toyota.car.factory.AssemblyLine;
 import org.javaacadmey.toyota.car.warehouse.Warehouse;
 
 public class Manager {
-    public void sellCar(Customer customer, Warehouse warehouse) {
+    public Car sellCar(Customer customer, Warehouse warehouse, AssemblyLine assemblyLine) {
+        Car mostExpensiveCar = null;
         int customerMoney = customer.getAmountOfMoney();
-        Price price = checkMostExpensiveCar(customerMoney);
-//        Car carForSale = checkAvailableCar(price, warehouse);
+        Price price = Price.getMaxCarBySellPrice(customerMoney);
         if (price == null) {
-            System.out.println("Не достаточно денег на покупку.");
+            System.out.println("Недостаточно денег на покупку.");
+        } else {
+            mostExpensiveCar = findMostExpensiveCar(warehouse, customerMoney);
+            if (mostExpensiveCar == null) {
+                sendRequestForAssembly(price, assemblyLine, warehouse);
+                mostExpensiveCar = sellCar(customer, warehouse, assemblyLine);
+            }
         }
+
+        return mostExpensiveCar;
     }
 
-    private Price checkMostExpensiveCar(int customerMoney) {
-        if (customerMoney >= Price.DYNA.getSellPrice()) {
-            return Price.DYNA;
-        } else if (customerMoney >= Price.HIANCE.getSellPrice()) {
-            return Price.HIANCE;
-        } else if (customerMoney >= Price.SOLARA.getSellPrice()){
-            return Price.SOLARA;
-        } else if (customerMoney >= Price.CAMRY.getSellPrice()) {
-            return Price.CAMRY;
-        }
-        return null;
-    }
-
-    private void checkAvailableCar(Price price, Warehouse warehouse) {
+    private Car findMostExpensiveCar(Warehouse warehouse, int budget) {
+        Car mostExpensiveCar = null;
         if (warehouse.getCarQty() == 0) {
-            sendRequestForAssembly(price);
+            return mostExpensiveCar;
         }
 
-        if (price == Price.DYNA) {
+        Car[][] cars = {
+                warehouse.getSolaras(), warehouse.getCamrys(),
+                warehouse.getDynas(), warehouse.getHiances()};
 
+        for (Car[] models : cars) {
+            for (Car car : models) {
+                if (car.getCost() <= budget &&
+                        (mostExpensiveCar == null || car.getCost() > mostExpensiveCar.getCost())) {
+                    mostExpensiveCar = car;
+                }
+            }
         }
+        return mostExpensiveCar;
     }
 
-    private void sendRequestForAssembly(Price price) {
+    private void sendRequestForAssembly(Price price, AssemblyLine assemblyLine, Warehouse warehouse) {
         if (price == Price.DYNA) {
-
-
+             warehouse.addDyna(assemblyLine.createDyna(CarColor.BLACK.getColorName(), price.getSellPrice()));
+        } else if (price == Price.HIANCE) {
+            warehouse.addHiance(assemblyLine.createHiance(CarColor.BLACK.getColorName(), price.getSellPrice()));
+        } else if (price == Price.SOLARA) {
+            warehouse.addSolara(assemblyLine.createSolara(CarColor.BLACK.getColorName(), price.getSellPrice()));
+        } else if (price == Price.CAMRY) {
+            warehouse.addCamry(assemblyLine.createCamry(CarColor.BLACK.getColorName(), price.getSellPrice()));
         }
     }
 }

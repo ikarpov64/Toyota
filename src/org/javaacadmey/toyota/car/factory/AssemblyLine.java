@@ -1,6 +1,7 @@
 package org.javaacadmey.toyota.car.factory;
 
 import org.javaacadmey.toyota.car.Countries;
+import org.javaacadmey.toyota.car.cars.Car;
 import org.javaacadmey.toyota.car.cars.components.TransmissionType;
 import org.javaacadmey.toyota.car.cars.components.Wheel;
 import org.javaacadmey.toyota.car.cars.models.Camry;
@@ -15,33 +16,33 @@ public class AssemblyLine {
         this.country = country;
     }
 
-    public Camry createCamry(String color, double price) {
+    public Car createCamry(String color, double price) {
         Wheel[] wheels = assemblyWheels(Camry.WHEEL_DIAMETER, 4);
-        Camry camry = new Camry(color, 125, TransmissionType.AUTOMATIC_TRANSMISSION.name(),
+        Car camry = new Camry(color, 125, TransmissionType.AUTOMATIC_TRANSMISSION.name(),
                 false, wheels, Factory.createGasTank(), Factory.createEngine(),
                 Factory.createElectrics(), Factory.createHeadlights(), true, price, country);
         return camry;
     }
 
-    public Solara createSolara(String color, double price) {
+    public Car createSolara(String color, double price) {
         Wheel[] wheels = assemblyWheels(Solara.WHEEL_DIAMETER, 4);
-        Solara solara = new Solara(color, 125, TransmissionType.AUTOMATIC_TRANSMISSION.name(),
+        Car solara = new Solara(color, 125, TransmissionType.AUTOMATIC_TRANSMISSION.name(),
                 false, wheels, Factory.createGasTank(), Factory.createEngine(),
                 Factory.createElectrics(), Factory.createHeadlights(), true, price, country);
         return solara;
     }
 
-    public Hiance createHiance(String color, double price) {
+    public Car createHiance(String color, double price) {
         Wheel[] wheels = assemblyWheels(Hiance.WHEEL_DIAMETER, 4);
-        Hiance hiance = new Hiance(color, 125, TransmissionType.AUTOMATIC_TRANSMISSION.name(),
+        Car hiance = new Hiance(color, 125, TransmissionType.AUTOMATIC_TRANSMISSION.name(),
                 false, wheels, Factory.createGasTank(), Factory.createEngine(),
                 Factory.createElectrics(), Factory.createHeadlights(), 25000, price, country);
         return hiance;
     }
 
-    public Dyna createDyna(String color, double price) {
+    public Car createDyna(String color, double price) {
         Wheel[] wheels = assemblyWheels(Dyna.WHEEL_DIAMETER, 4);
-        Dyna dyna = new Dyna(color, 125, TransmissionType.AUTOMATIC_TRANSMISSION.name(),
+        Car dyna = new Dyna(color, 125, TransmissionType.AUTOMATIC_TRANSMISSION.name(),
                 false, wheels, Factory.createGasTank(), Factory.createEngine(),
                 Factory.createElectrics(), Factory.createHeadlights(), 44000, price, country);
         return dyna;

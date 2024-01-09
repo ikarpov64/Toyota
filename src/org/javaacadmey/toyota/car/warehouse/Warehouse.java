@@ -21,25 +21,25 @@ public class Warehouse {
         return carQty;
     }
 
-    public void addCamry(Camry camry) {
+    public void addCamry(Car camry) {
         this.camrys = increaseArray(this.camrys, this.camrys.length + 1);
         this.camrys[this.camrys.length - 1] = camry;
         increaseCarQty();
     }
 
-    public void addDyna(Dyna dynas) {
+    public void addDyna(Car dynas) {
         this.dynas = increaseArray(this.dynas, this.dynas.length + 1);
         this.dynas[this.dynas.length - 1] = dynas;
         increaseCarQty();
     }
 
-    public void addHiance(Hiance hiance) {
+    public void addHiance(Car hiance) {
         this.hiances = increaseArray(this.hiances, this.hiances.length + 1);
         this.hiances[this.hiances.length - 1] = hiance;
         increaseCarQty();
     }
 
-    public void addSolara(Solara solara) {
+    public void addSolara(Car solara) {
         this.solaras = increaseArray(this.solaras, this.solaras.length + 1);
         this.solaras[this.solaras.length - 1] = solara;
         increaseCarQty();
@@ -126,5 +126,17 @@ public class Warehouse {
 
     public Car[] getSolaras() {
         return solaras;
+    }
+
+    public Car[] getCamrys() {
+        return camrys;
+    }
+
+    public Car[] getDynas() {
+        return dynas;
+    }
+
+    public Car[] getHiances() {
+        return hiances;
     }
 }
