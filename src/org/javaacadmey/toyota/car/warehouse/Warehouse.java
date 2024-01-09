@@ -12,57 +12,46 @@ import java.util.Arrays;
 public class Warehouse {
     private int freeSpace = 1000;
     private int carQty = 0;
-    private Camry[] camrys = new Camry[0];
-    private Dyna[] dynas = new Dyna[0];
-    private Hiance[] hiances = new Hiance[0];
-    private Solara[] solaras = new Solara[0];
+    private Car[] camrys = new Camry[0];
+    private Car[] dynas = new Dyna[0];
+    private Car[] hiances = new Hiance[0];
+    private Car[] solaras = new Solara[0];
 
     public int getCarQty() {
         return carQty;
     }
 
     public void addCamry(Camry camry) {
-        Camry[] newCamrys = new Camry[this.camrys.length + 1];
-        System.arraycopy(this.camrys, 0, newCamrys, 0, this.camrys.length);
-        newCamrys[newCamrys.length - 1] = camry;
-        this.camrys = newCamrys;
+        this.camrys = increaseArray(this.camrys, this.camrys.length + 1);
+        this.camrys[this.camrys.length - 1] = camry;
         increaseCarQty();
     }
 
     public void addDyna(Dyna dynas) {
-        Dyna[] newDynas = new Dyna[this.dynas.length + 1];
-        System.arraycopy(this.dynas, 0, newDynas, 0, this.dynas.length);
-        newDynas[newDynas.length - 1] = dynas;
-        this.dynas = newDynas;
+        this.dynas = increaseArray(this.dynas, this.dynas.length + 1);
+        this.dynas[this.dynas.length - 1] = dynas;
         increaseCarQty();
     }
 
     public void addHiance(Hiance hiance) {
-        Hiance[] newHiances = new Hiance[this.hiances.length + 1];
-        System.arraycopy(this.hiances, 0, newHiances, 0, this.hiances.length);
-        newHiances[newHiances.length - 1] = hiance;
-        this.hiances = newHiances;
+        this.hiances = increaseArray(this.hiances, this.hiances.length + 1);
+        this.hiances[this.hiances.length - 1] = hiance;
         increaseCarQty();
     }
 
     public void addSolara(Solara solara) {
-//        Solara[] newSolara = (Solara[]) addCars(this.solaras, this.solaras.length + 1);
-//        Car[] newSolara1 = addCars(this.solaras, this.solaras.length + 1);
-        this.solaras = addCars(this.solaras, this.solaras.length + 1);
-//        Solara[] newSolara = new Solara[this.solaras.length + 1];
-//        System.arraycopy(this.solaras, 0, newSolara, 0, this.solaras.length);
-        newSolara1[newSolara1.length - 1] = solara;
-        this.solaras = newSolara1;
+        this.solaras = increaseArray(this.solaras, this.solaras.length + 1);
+        this.solaras[this.solaras.length - 1] = solara;
         increaseCarQty();
     }
 
-    private Car[] addCars(Car[] cars, int carsCount) {
+    private Car[] increaseArray(Car[] cars, int carsCount) {
         return Arrays.copyOf(cars, carsCount);
     }
 
-    public Camry getCamry() throws NoCarAvailableException {
+    public Car getCamry() throws NoCarAvailableException {
         if (getCarsQty(this.camrys) != 0) {
-            Camry camry = this.camrys[camrysQty() - 1];
+            Car camry = this.camrys[camrysQty() - 1];
             removeCamry(camrysQty() - 1);
             return camry;
         } else {
@@ -77,9 +66,9 @@ public class Warehouse {
         reduceCarQty();
     }
 
-    public Solara getSolara() throws NoCarAvailableException {
+    public Car getSolara() throws NoCarAvailableException {
         if (getCarsQty(this.solaras) != 0){
-            Solara solara = this.solaras[solarasQty() - 1];
+            Car solara = this.solaras[solarasQty() - 1];
             removeSolara(solarasQty() - 1);
             return solara;
         } else {
@@ -94,9 +83,9 @@ public class Warehouse {
         reduceCarQty();
     }
 
-    public Dyna getDyna() throws NoCarAvailableException {
+    public Car getDyna() throws NoCarAvailableException {
         if (getCarsQty(this.dynas) != 0) {
-            Dyna dyna = this.dynas[dynasQty() - 1];
+            Car dyna = this.dynas[dynasQty() - 1];
             removeDyna(dynasQty() - 1);
             return dyna;
         } else {
@@ -111,9 +100,9 @@ public class Warehouse {
         reduceCarQty();
     }
 
-    public Hiance getHiance() throws NoCarAvailableException {
+    public Car getHiance() throws NoCarAvailableException {
         if (getCarsQty(this.hiances) != 0) {
-            Hiance hiance = this.hiances[hiancesQty() - 1];
+            Car hiance = this.hiances[hiancesQty() - 1];
             removeHiance(hiancesQty() - 1);
             return hiance;
         } else {
@@ -155,7 +144,7 @@ public class Warehouse {
         return this.solaras.length;
     }
 
-    public Solara[] getSolaras() {
+    public Car[] getSolaras() {
         return solaras;
     }
 }
