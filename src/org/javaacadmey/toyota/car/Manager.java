@@ -7,7 +7,7 @@ public class Manager {
     public void sellCar(Customer customer, Warehouse warehouse) {
         int customerMoney = customer.getAmountOfMoney();
         Price price = checkMostExpensiveCar(customerMoney);
-        Car carForSale = checkAvailableCar(price, warehouse);
+//        Car carForSale = checkAvailableCar(price, warehouse);
         if (price == null) {
             System.out.println("Не достаточно денег на покупку.");
         }
@@ -26,7 +26,7 @@ public class Manager {
         return null;
     }
 
-    private Car checkAvailableCar(Price price, Warehouse warehouse) {
+    private void checkAvailableCar(Price price, Warehouse warehouse) {
         if (warehouse.getCarQty() == 0) {
             sendRequestForAssembly(price);
         }
