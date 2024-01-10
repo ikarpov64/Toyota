@@ -2,11 +2,21 @@ package org.javaacadmey.toyota.car;
 
 import org.javaacadmey.toyota.car.cars.Car;
 
-public class Report {
-    private final Manager manager;
-    private final Car[] cars = new Car[0];
+import java.util.Arrays;
 
-    public Report(Manager manager) {
-        this.manager = manager;
+public class Report {
+    private final String managerName;
+    private Car[] cars = new Car[0];
+
+    public Report(String manager) {
+        this.managerName = manager;
+    }
+
+    public void addCarToReport(Car car) {
+        if (car != null) {
+            cars = Arrays.copyOf(cars, cars.length + 1);
+            cars[cars.length - 1] = car;
+            System.out.println(cars.length);
+        }
     }
 }

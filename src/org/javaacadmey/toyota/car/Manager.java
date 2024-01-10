@@ -8,11 +8,12 @@ import org.javaacadmey.toyota.car.warehouse.Warehouse;
 
 public class Manager {
     private final String name;
-    private Report report;
+    private final Report report;
 
     public Manager(String name) {
         this.name = name;
-
+        this.report = new Report(name);
+        System.out.println(report);
     }
 
     public Car sellCar(Customer customer, Warehouse warehouse, AssemblyLine assemblyLine) throws NoCarAvailableException {
@@ -20,13 +21,13 @@ public class Manager {
         int customerMoney = customer.getAmountOfMoney();
         Price price = Price.getMaxCarBySellPrice(customerMoney);
 
-
         if (price == null) {
             System.out.println("Недостаточно денег на покупку.");
         } else {
             try {
                 mostExpensiveCar = mostExpensiveCar(customerMoney, warehouse);
                 customer.setAmountOfMoney(price.getSellPrice());
+                System.out.println("Вы купили" + mostExpensiveCar);
             } catch (NoCarAvailableException e) {
                 sendRequestForAssembly(price, assemblyLine, warehouse);
                 return sellCar(customer, warehouse, assemblyLine);
@@ -78,7 +79,8 @@ public class Manager {
             warehouse.addHiance(assemblyLine.createHiance(CarColor.BLACK.getColorName(), price.getSellPrice()));
         } else if (price == Price.SOLARA) {
             warehouse.addSolara(assemblyLine.createSolara(CarColor.BLACK.getColorName(), price.getSellPrice()));
+        } else {
+            warehouse.addCamry(assemblyLine.createCamry(CarColor.BLACK.getColorName(), price.getSellPrice()));
         }
-        warehouse.addCamry(assemblyLine.createCamry(CarColor.BLACK.getColorName(), price.getSellPrice()));
     }
 }

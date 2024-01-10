@@ -46,8 +46,7 @@ public class Runner {
         cashier.addIncome(manager1.sellCar(customer2, warehouse, assemblyLine));
         cashier.addIncome(manager1.sellCar(customer3, warehouse, assemblyLine));
         cashier.addIncome(manager1.sellCar(customer4, warehouse, assemblyLine));
-        Car car5 = manager1.sellCar(customer5, warehouse, assemblyLine);
-        cashier.addIncome(car5);
+        cashier.addIncome(manager1.sellCar(customer5, warehouse, assemblyLine));
         cashier.addIncome(manager1.sellCar(customer6, warehouse, assemblyLine));
         cashier.addIncome(manager1.sellCar(customer7, warehouse, assemblyLine));
         cashier.addIncome(manager1.sellCar(customer8, warehouse, assemblyLine));
