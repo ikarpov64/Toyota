@@ -74,13 +74,13 @@ public class Manager {
 
     private void sendRequestForAssembly(Price price, AssemblyLine assemblyLine, Warehouse warehouse) {
         if (price == Price.DYNA) {
-             warehouse.addDyna(assemblyLine.createDyna(CarColor.BLACK.getColorName(), price.getSellPrice()));
+             warehouse.addDyna(assemblyLine.createDyna(CarColor.BLACK.getColorName(), price));
         } else if (price == Price.HIANCE) {
-            warehouse.addHiance(assemblyLine.createHiance(CarColor.BLACK.getColorName(), price.getSellPrice()));
+            warehouse.addHiance(assemblyLine.createHiance(CarColor.BLACK.getColorName(), price));
         } else if (price == Price.SOLARA) {
-            warehouse.addSolara(assemblyLine.createSolara(CarColor.BLACK.getColorName(), price.getSellPrice()));
+            warehouse.addSolara(assemblyLine.createSolara(CarColor.BLACK.getColorName(), price));
         } else {
-            warehouse.addCamry(assemblyLine.createCamry(CarColor.BLACK.getColorName(), price.getSellPrice()));
+            warehouse.addCamry(assemblyLine.createCamry(CarColor.BLACK.getColorName(), price));
         }
     }
 }

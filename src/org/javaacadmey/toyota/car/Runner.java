@@ -17,14 +17,20 @@ import java.util.Arrays;
 public class Runner {
     public static void main(String[] args) throws StartCarException, NoCarAvailableException {
 
+        Factory[] factories = new Factory[Countries.values().length];
+        for (int i = 0; i < Countries.values().length; i++) {
+            factories[i] = new Factory(Countries.values()[i]);
+        }
+//        System.out.println(Arrays.toString(Countries.values()));
+        System.out.println(Arrays.toString(factories));
         Factory factory = new Factory(Countries.JAPAN);
-        AssemblyLine assemblyLine = new AssemblyLine(Countries.JAPAN);
+        AssemblyLine assemblyLine = new AssemblyLine(Countries.JAPAN, factories);
         Warehouse warehouse = new Warehouse();
 
-        Car camry = assemblyLine.createCamry("black", Price.CAMRY.getSellPrice());
-        Car solara = assemblyLine.createSolara("white", Price.SOLARA.getSellPrice());
-        Car hiance = assemblyLine.createHiance("black", Price.HIANCE.getSellPrice());
-        Car dyna = assemblyLine.createDyna("black", Price.DYNA.getSellPrice());
+        Car camry = assemblyLine.createCamry("black", Price.CAMRY);
+        Car solara = assemblyLine.createSolara("white", Price.SOLARA);
+        Car hiance = assemblyLine.createHiance("black", Price.HIANCE);
+        Car dyna = assemblyLine.createDyna("black", Price.DYNA);
 
         warehouse.addCamry(camry);
         warehouse.addSolara(solara);

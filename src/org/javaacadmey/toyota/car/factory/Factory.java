@@ -29,4 +29,16 @@ public class Factory {
     public static  Wheel createWheel(int wheelDiameter) {
         return new Wheel(wheelDiameter);
     }
+
+    @Override
+    public String toString() {
+        return "Factory{" +
+                "country=" + country +
+                '}';
+    }
+
+    public Countries getCountry() {
+        return country;
+    }
 }
+
