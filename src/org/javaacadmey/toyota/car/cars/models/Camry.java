@@ -1,6 +1,7 @@
 package org.javaacadmey.toyota.car.cars.models;
 
 import org.javaacadmey.toyota.car.Countries;
+import org.javaacadmey.toyota.car.Price;
 import org.javaacadmey.toyota.car.cars.components.*;
 import org.javaacadmey.toyota.car.cars.types.Passenger;
 
@@ -18,12 +19,12 @@ public class Camry extends Passenger {
                  Electrics electrics,
                  Headlights headlights,
                  boolean hasCruise,
-                 double cost,
+                 Price price,
                  Countries country) {
         super(color, maxSpeed, transmission,
                 isMoving, wheels, gasTank, engine,
                 electrics, headlights, hasCruise,
-                cost, country);
+                price, country);
     }
 
     public void playMusic() {

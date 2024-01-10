@@ -1,6 +1,7 @@
 package org.javaacadmey.toyota.car.cars.types;
 
 import org.javaacadmey.toyota.car.Countries;
+import org.javaacadmey.toyota.car.Price;
 import org.javaacadmey.toyota.car.cars.Car;
 import org.javaacadmey.toyota.car.cars.components.*;
 
@@ -17,9 +18,9 @@ public abstract class Passenger extends Car {
                      Electrics electrics,
                      Headlights headlights,
                      boolean hasCruise,
-                     double cost,
+                     Price price,
                      Countries country) {
-        super(color, maxSpeed, transmission, isMoving, wheels, gasTank, engine, electrics, headlights, cost, country);
+        super(color, maxSpeed, transmission, isMoving, wheels, gasTank, engine, electrics, headlights, price, country);
         this.hasCruise = hasCruise;
     }
 

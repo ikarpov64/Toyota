@@ -1,6 +1,7 @@
 package org.javaacadmey.toyota.car.cars.types;
 
 import org.javaacadmey.toyota.car.Countries;
+import org.javaacadmey.toyota.car.Price;
 import org.javaacadmey.toyota.car.cars.Car;
 import org.javaacadmey.toyota.car.cars.components.*;
 
@@ -17,11 +18,11 @@ public abstract class Cargo extends Car {
                  Electrics electrics,
                  Headlights headlights,
                  double loadCapacity,
-                 double cost,
+                 Price price,
                  Countries country) {
         super(color, maxSpeed, transmission,
                 isMoving, wheels, gasTank, engine,
-                electrics, headlights, cost, country);
+                electrics, headlights, price, country);
         this.LOAD_CAPACITY = loadCapacity;
     }
 }

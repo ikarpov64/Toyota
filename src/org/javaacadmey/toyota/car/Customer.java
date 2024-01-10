@@ -1,7 +1,7 @@
 package org.javaacadmey.toyota.car;
 
 public class Customer {
-    private String name;
+    private final String name;
     private int amountOfMoney;
 
     public Customer(String name, int amountOfMoney) {
@@ -15,5 +15,9 @@ public class Customer {
 
     public int getAmountOfMoney() {
         return amountOfMoney;
+    }
+
+    public void setAmountOfMoney(int amountOfMoney) {
+        this.amountOfMoney -= amountOfMoney;
     }
 }

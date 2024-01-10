@@ -53,6 +53,7 @@ public class Warehouse {
         return Arrays.copyOf(cars, carsCount);
     }
 
+
     public Car getCamry() throws NoCarAvailableException {
         if (getCarsQty(this.camrys) != 0) {
             Car camry = this.camrys[camrysQty() - 1];

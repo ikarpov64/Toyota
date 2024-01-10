@@ -1,6 +1,7 @@
 package org.javaacadmey.toyota.car.cars.models;
 
 import org.javaacadmey.toyota.car.Countries;
+import org.javaacadmey.toyota.car.Price;
 import org.javaacadmey.toyota.car.cars.components.*;
 import org.javaacadmey.toyota.car.cars.types.Cargo;
 
@@ -19,12 +20,12 @@ public class Hiance extends Cargo {
                   Electrics electrics,
                   Headlights headlights,
                   double loadCapacity,
-                  double cost,
+                  Price price,
                   Countries country) {
         super(color, maxSpeed, transmission,
                 isMoving, wheels, gasTank,
                 engine, electrics, headlights,
-                loadCapacity, cost, country);
+                loadCapacity, price, country);
 
     }
 }

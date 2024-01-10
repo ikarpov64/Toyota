@@ -2,47 +2,66 @@ package org.javaacadmey.toyota.car;
 
 import org.javaacadmey.toyota.car.cars.Car;
 import org.javaacadmey.toyota.car.cars.CarColor;
+import org.javaacadmey.toyota.car.exeptions.NoCarAvailableException;
 import org.javaacadmey.toyota.car.factory.AssemblyLine;
 import org.javaacadmey.toyota.car.warehouse.Warehouse;
 
 public class Manager {
-    public Car sellCar(Customer customer, Warehouse warehouse, AssemblyLine assemblyLine) {
+    public Car sellCar(Customer customer, Warehouse warehouse, AssemblyLine assemblyLine) throws NoCarAvailableException {
         Car mostExpensiveCar = null;
         int customerMoney = customer.getAmountOfMoney();
         Price price = Price.getMaxCarBySellPrice(customerMoney);
+
+
         if (price == null) {
             System.out.println("Недостаточно денег на покупку.");
         } else {
-            mostExpensiveCar = findMostExpensiveCar(warehouse, customerMoney);
-            if (mostExpensiveCar == null) {
+            try {
+                mostExpensiveCar = mostExpensiveCar(customerMoney, warehouse);
+                customer.setAmountOfMoney(price.getSellPrice());
+            } catch (NoCarAvailableException e) {
                 sendRequestForAssembly(price, assemblyLine, warehouse);
-                mostExpensiveCar = sellCar(customer, warehouse, assemblyLine);
+                return sellCar(customer, warehouse, assemblyLine);
             }
         }
 
         return mostExpensiveCar;
     }
 
-    private Car findMostExpensiveCar(Warehouse warehouse, int budget) {
-        Car mostExpensiveCar = null;
-        if (warehouse.getCarQty() == 0) {
-            return mostExpensiveCar;
+    private Car mostExpensiveCar(int customerMoney, Warehouse warehouse) throws NoCarAvailableException {
+        if (customerMoney >= Price.DYNA.getSellPrice() && warehouse.dynasQty() > 0) {
+            return warehouse.getDyna();
+        } else if (customerMoney >= Price.HIANCE.getSellPrice() && warehouse.hiancesQty() > 0) {
+            return warehouse.getHiance();
+        } else if (customerMoney >= Price.SOLARA.getSellPrice() && warehouse.solarasQty() > 0) {
+            return warehouse.getSolara();
+        } else if (customerMoney >= Price.CAMRY.getSellPrice() && warehouse.camrysQty() > 0) {
+            return warehouse.getCamry();
         }
-
-        Car[][] cars = {
-                warehouse.getSolaras(), warehouse.getCamrys(),
-                warehouse.getDynas(), warehouse.getHiances()};
-
-        for (Car[] models : cars) {
-            for (Car car : models) {
-                if (car.getCost() <= budget &&
-                        (mostExpensiveCar == null || car.getCost() > mostExpensiveCar.getCost())) {
-                    mostExpensiveCar = car;
-                }
-            }
-        }
-        return mostExpensiveCar;
+        throw new NoCarAvailableException("Нет машин в наличии");
     }
+
+//    private Car findMostExpensiveCar(Warehouse warehouse, int budget) {
+//        Car mostExpensiveCar = null;
+//        if (warehouse.getCarQty() == 0) {
+//            return mostExpensiveCar;
+//        }
+//
+//        Car[][] cars = {
+//                warehouse.getSolaras(), warehouse.getCamrys(),
+//                warehouse.getDynas(), warehouse.getHiances()};
+//
+//        for (Car[] models : cars) {
+//            for (Car car : models) {
+//                if (car.getPrice().getSellPrice() <= budget &&
+//                        (mostExpensiveCar == null ||
+//                                car.getPrice().getSellPrice() > mostExpensiveCar.getPrice().getSellPrice())) {
+//                    mostExpensiveCar = car;
+//                }
+//            }
+//        }
+//        return mostExpensiveCar;
+//    }
 
     private void sendRequestForAssembly(Price price, AssemblyLine assemblyLine, Warehouse warehouse) {
         if (price == Price.DYNA) {
@@ -51,8 +70,7 @@ public class Manager {
             warehouse.addHiance(assemblyLine.createHiance(CarColor.BLACK.getColorName(), price.getSellPrice()));
         } else if (price == Price.SOLARA) {
             warehouse.addSolara(assemblyLine.createSolara(CarColor.BLACK.getColorName(), price.getSellPrice()));
-        } else if (price == Price.CAMRY) {
-            warehouse.addCamry(assemblyLine.createCamry(CarColor.BLACK.getColorName(), price.getSellPrice()));
         }
+        warehouse.addCamry(assemblyLine.createCamry(CarColor.BLACK.getColorName(), price.getSellPrice()));
     }
 }

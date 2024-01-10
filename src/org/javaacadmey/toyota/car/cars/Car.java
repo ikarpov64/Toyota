@@ -1,6 +1,7 @@
 package org.javaacadmey.toyota.car.cars;
 
 import org.javaacadmey.toyota.car.Countries;
+import org.javaacadmey.toyota.car.Price;
 import org.javaacadmey.toyota.car.cars.components.*;
 import org.javaacadmey.toyota.car.exeptions.StartCarException;
 
@@ -11,6 +12,7 @@ public abstract class Car {
     private String transmission;
     private boolean isMoving;
     private double cost;
+    private Price price;
 
     private Wheel[] wheels = new Wheel[4];
     private GasTank gasTank;
@@ -21,7 +23,7 @@ public abstract class Car {
     public Car(String color, int maxSpeed,
                String transmission, boolean isMoving,
                Wheel[] wheels, GasTank gasTank,
-               Engine engine, Electrics electrics, Headlights headlights, double cost, Countries country) {
+               Engine engine, Electrics electrics, Headlights headlights, Price price, Countries country) {
         this.color = color;
         this.maxSpeed = maxSpeed;
         this.transmission = transmission;
@@ -31,7 +33,7 @@ public abstract class Car {
         this.engine = engine;
         this.electrics = electrics;
         this.headlights = headlights;
-        this.cost = cost;
+        this.price = price;
         this.country = country;
     }
 
@@ -90,7 +92,7 @@ public abstract class Car {
         }
     }
 
-    public double getCost() {
-        return cost;
+    public Price getPrice() {
+        return price;
     }
 }
