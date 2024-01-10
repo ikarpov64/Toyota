@@ -10,6 +10,11 @@ public class Manager {
     private final String name;
     private Report report;
 
+    public Manager(String name) {
+        this.name = name;
+
+    }
+
     public Car sellCar(Customer customer, Warehouse warehouse, AssemblyLine assemblyLine) throws NoCarAvailableException {
         Car mostExpensiveCar = null;
         int customerMoney = customer.getAmountOfMoney();

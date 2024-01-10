@@ -32,7 +32,7 @@ public class Runner {
         warehouse.addDyna(dyna);
 
         Cashier cashier = new Cashier();
-        Manager manager1 = new Manager();
+        Manager manager1 = new Manager("Peter");
         Customer customer1 = new Customer("Ivan", 10000);
         Customer customer2 = new Customer("Ivan2", 12000);
         Customer customer3 = new Customer("Ivan3", 15000);
