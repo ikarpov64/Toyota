@@ -7,6 +7,9 @@ import org.javaacadmey.toyota.car.factory.AssemblyLine;
 import org.javaacadmey.toyota.car.warehouse.Warehouse;
 
 public class Manager {
+    private final String name;
+    private Report report;
+
     public Car sellCar(Customer customer, Warehouse warehouse, AssemblyLine assemblyLine) throws NoCarAvailableException {
         Car mostExpensiveCar = null;
         int customerMoney = customer.getAmountOfMoney();

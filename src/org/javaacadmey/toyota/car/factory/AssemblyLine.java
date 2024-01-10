@@ -19,34 +19,30 @@ public class AssemblyLine {
 
     public Car createCamry(String color, double price) {
         Wheel[] wheels = assemblyWheels(Camry.WHEEL_DIAMETER, 4);
-        Car camry = new Camry(color, 125, TransmissionType.AUTOMATIC_TRANSMISSION.name(),
+        return new Camry(color, 125, TransmissionType.AUTOMATIC_TRANSMISSION.name(),
                 false, wheels, Factory.createGasTank(), Factory.createEngine(),
                 Factory.createElectrics(), Factory.createHeadlights(), true, Price.CAMRY, country);
-        return camry;
     }
 
     public Car createSolara(String color, double price) {
         Wheel[] wheels = assemblyWheels(Solara.WHEEL_DIAMETER, 4);
-        Car solara = new Solara(color, 125, TransmissionType.AUTOMATIC_TRANSMISSION.name(),
+        return new Solara(color, 125, TransmissionType.AUTOMATIC_TRANSMISSION.name(),
                 false, wheels, Factory.createGasTank(), Factory.createEngine(),
                 Factory.createElectrics(), Factory.createHeadlights(), true, Price.SOLARA, country);
-        return solara;
     }
 
     public Car createHiance(String color, double price) {
         Wheel[] wheels = assemblyWheels(Hiance.WHEEL_DIAMETER, 4);
-        Car hiance = new Hiance(color, 125, TransmissionType.AUTOMATIC_TRANSMISSION.name(),
+        return new Hiance(color, 125, TransmissionType.AUTOMATIC_TRANSMISSION.name(),
                 false, wheels, Factory.createGasTank(), Factory.createEngine(),
                 Factory.createElectrics(), Factory.createHeadlights(), 25000, Price.HIANCE, country);
-        return hiance;
     }
 
     public Car createDyna(String color, double price) {
         Wheel[] wheels = assemblyWheels(Dyna.WHEEL_DIAMETER, 4);
-        Car dyna = new Dyna(color, 125, TransmissionType.AUTOMATIC_TRANSMISSION.name(),
+        return new Dyna(color, 125, TransmissionType.AUTOMATIC_TRANSMISSION.name(),
                 false, wheels, Factory.createGasTank(), Factory.createEngine(),
                 Factory.createElectrics(), Factory.createHeadlights(), 44000, Price.DYNA, country);
-        return dyna;
     }
 
     private Wheel[] assemblyWheels(int diameter, int wheelCount) {
