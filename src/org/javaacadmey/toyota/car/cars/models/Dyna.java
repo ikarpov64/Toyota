@@ -31,4 +31,5 @@ public class Dyna extends Cargo {
     public void chargePhone() {
         System.out.println("Телефон заряжается");
     }
+
 }

@@ -26,8 +26,8 @@ public class Manager {
         } else {
             try {
                 mostExpensiveCar = mostExpensiveCar(customerMoney, warehouse);
-                customer.setAmountOfMoney(price.getSellPrice());
-                System.out.println("Вы купили" + mostExpensiveCar);
+                customer.reduceAmountOfMoney(price.getSellPrice());
+                System.out.println("Вы купили " + mostExpensiveCar);
             } catch (NoCarAvailableException e) {
                 sendRequestForAssembly(price, assemblyLine, warehouse);
                 return sellCar(customer, warehouse, assemblyLine);

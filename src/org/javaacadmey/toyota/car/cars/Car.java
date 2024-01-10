@@ -6,15 +6,14 @@ import org.javaacadmey.toyota.car.cars.components.*;
 import org.javaacadmey.toyota.car.exeptions.StartCarException;
 
 public abstract class Car {
-    public Countries country;
+    public static final int WHEEL_COUNT = 4;
+    private Countries country;
     private String color;
     private int maxSpeed;
     private String transmission;
     private boolean isMoving;
-    private double cost;
     private Price price;
-
-    private Wheel[] wheels = new Wheel[4];
+    private Wheel[] wheels;
     private GasTank gasTank;
     private Engine engine;
     private Electrics electrics;
@@ -95,4 +94,5 @@ public abstract class Car {
     public Price getPrice() {
         return price;
     }
+
 }

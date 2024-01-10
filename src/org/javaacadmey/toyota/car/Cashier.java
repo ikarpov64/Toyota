@@ -11,7 +11,6 @@ public class Cashier {
         if (car != null) {
             income = Arrays.copyOf(income, income.length + 1);
             income[income.length - 1] = car;
-            System.out.println(income.length);
         }
     }
 

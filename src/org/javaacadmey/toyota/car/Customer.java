@@ -17,7 +17,7 @@ public class Customer {
         return amountOfMoney;
     }
 
-    public void setAmountOfMoney(int amountOfMoney) {
+    public void reduceAmountOfMoney(int amountOfMoney) {
         this.amountOfMoney -= amountOfMoney;
     }
 }

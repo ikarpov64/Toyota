@@ -10,23 +10,23 @@ public class Factory {
         this.country = country;
     }
 
-    public static Electrics createElectrics() {
+    public Electrics createElectrics() {
         return new Electrics();
     }
 
-    public static  Engine createEngine() {
+    public Engine createEngine() {
         return new Engine();
     }
 
-    public static  GasTank createGasTank() {
+    public GasTank createGasTank() {
         return new GasTank();
     }
 
-    public static  Headlights createHeadlights() {
+    public Headlights createHeadlights() {
         return new Headlights();
     }
 
-    public static  Wheel createWheel(int wheelDiameter) {
+    public Wheel createWheel(int wheelDiameter) {
         return new Wheel(wheelDiameter);
     }
 

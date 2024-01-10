@@ -15,15 +15,13 @@ import org.javaacadmey.toyota.car.warehouse.Warehouse;
 import java.util.Arrays;
 
 public class Runner {
-    public static void main(String[] args) throws StartCarException, NoCarAvailableException {
+    public static void main(String[] args) throws NoCarAvailableException {
 
         Factory[] factories = new Factory[Countries.values().length];
         for (int i = 0; i < Countries.values().length; i++) {
             factories[i] = new Factory(Countries.values()[i]);
         }
-//        System.out.println(Arrays.toString(Countries.values()));
-        System.out.println(Arrays.toString(factories));
-        Factory factory = new Factory(Countries.JAPAN);
+
         AssemblyLine assemblyLine = new AssemblyLine(Countries.JAPAN, factories);
         Warehouse warehouse = new Warehouse();
 
