@@ -11,16 +11,13 @@ import org.javaacadmey.toyota.car.exeptions.NoFreeSpaceInWarehouseException;
 import java.util.Arrays;
 
 public class Warehouse {
-    private int freeSpace = 1000;
+    private static final int WAREHOUSE_CAPACITY = 1000;
+    private int freeSpace = WAREHOUSE_CAPACITY;
     private int carQty = 0;
     private Car[] camrys = new Camry[0];
     private Car[] dynas = new Dyna[0];
     private Car[] hiances = new Hiance[0];
     private Car[] solaras = new Solara[0];
-
-    public int getCarQty() {
-        return carQty;
-    }
 
     public void addCamry(Car camry) {
         try {
@@ -134,6 +131,10 @@ public class Warehouse {
     private void increaseCarQty() {
         this.carQty++;
         this.freeSpace--;
+    }
+
+    public int getCarQty() {
+        return carQty;
     }
 
     private void checkFreeSpace() throws NoFreeSpaceInWarehouseException {
