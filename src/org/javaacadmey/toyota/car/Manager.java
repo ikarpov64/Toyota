@@ -16,7 +16,8 @@ public class Manager {
         System.out.println(report);
     }
 
-    public Car sellCar(Customer customer, Warehouse warehouse, AssemblyLine assemblyLine) throws NoCarAvailableException {
+    public Car sellCar(Customer customer, Warehouse warehouse,
+                       AssemblyLine assemblyLine) throws NoCarAvailableException {
         Car mostExpensiveCar = null;
         int customerMoney = customer.getAmountOfMoney();
         Price price = Price.getMaxCarBySellPrice(customerMoney);
