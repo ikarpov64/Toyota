@@ -18,12 +18,13 @@ public class FileWriterReport {
         }
     }
 
-    public void writeReportToFile(String reportText, String managerName) {
-        String fileName = String.format("report_%s.txt", managerName);
+    public void writeReportToFile(String reportText, String reportName) {
+        String fileName = String.format("report_%s.txt", reportName);
         String filePath = REPORTS_FOLDER_PATH + File.separator + fileName;
 
-        try (FileWriter writer = new FileWriter(filePath)) {
+        try (FileWriter writer = new FileWriter(filePath, true)) {
             writer.write(reportText);
+            writer.write("\n");
             System.out.println("Отчет успешно записан в файл: " + filePath);
         } catch (IOException e) {
             System.out.println("Не удалось записать отчет в файл. " + e.getMessage());

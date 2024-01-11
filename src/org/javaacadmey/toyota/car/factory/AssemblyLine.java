@@ -11,65 +11,51 @@ import org.javaacadmey.toyota.car.cars.models.Solara;
 import org.javaacadmey.toyota.car.exeptions.CountryFactoryNotEqualException;
 
 public class AssemblyLine {
-    Countries country;
-    Factory[] factories;
+    private Countries country;
+    private Factory[] factories;
+
+    public Countries getCountry() {
+        return country;
+    }
+
+    public Factory[] getFactories() {
+        return factories;
+    }
 
     public AssemblyLine(Countries country, Factory[] factories) {
         this.country = country;
         this.factories = factories;
     }
-
-    public Car createCamry(String color, Price price) {
-        try {
-            Factory factory = chooseFactory();
-            Wheel[] wheels = assemblyWheels(factory, Camry.WHEEL_DIAMETER);
-            return new Camry(color, 125, TransmissionType.AUTOMATIC_TRANSMISSION.name(),
-                    wheels, factory.createGasTank(), factory.createEngine(),
-                    factory.createElectrics(), factory.createHeadlights(), true, price, country);
-
-        } catch (CountryFactoryNotEqualException e) {
-            System.out.println(e.getMessage());;
-        }
-        return null;
+    protected Car createCamry(String color, Price price) throws CountryFactoryNotEqualException {
+        Factory factory = chooseFactory();
+        Wheel[] wheels = assemblyWheels(factory, Camry.WHEEL_DIAMETER);
+        return new Camry(color, 125, TransmissionType.AUTOMATIC_TRANSMISSION.name(),
+                wheels, factory.createGasTank(), factory.createEngine(),
+                factory.createElectrics(), factory.createHeadlights(), true, price, country);
     }
 
-    public Car createSolara(String color, Price price) {
-        try {
-            Factory factory = chooseFactory();
-            Wheel[] wheels = assemblyWheels(factory, Solara.WHEEL_DIAMETER);
-            return new Solara(color, 125, TransmissionType.AUTOMATIC_TRANSMISSION.name(),
-                    wheels, factory.createGasTank(), factory.createEngine(),
-                    factory.createElectrics(), factory.createHeadlights(), true, price, country);
-        } catch (CountryFactoryNotEqualException e) {
-            System.out.println(e.getMessage());;
-        }
-        return null;
+    protected Car createSolara(String color, Price price) throws CountryFactoryNotEqualException {
+        Factory factory = chooseFactory();
+        Wheel[] wheels = assemblyWheels(factory, Solara.WHEEL_DIAMETER);
+        return new Solara(color, 125, TransmissionType.AUTOMATIC_TRANSMISSION.name(),
+                wheels, factory.createGasTank(), factory.createEngine(),
+                factory.createElectrics(), factory.createHeadlights(), true, price, country);
     }
 
-    public Car createHiance(String color, Price price) {
-        try {
-            Factory factory = chooseFactory();
-            Wheel[] wheels = assemblyWheels(factory, Hiance.WHEEL_DIAMETER);
-            return new Hiance(color, 125, TransmissionType.AUTOMATIC_TRANSMISSION.name(),
-                    wheels, factory.createGasTank(), factory.createEngine(),
-                    factory.createElectrics(), factory.createHeadlights(), 25000, price, country);
-        } catch (CountryFactoryNotEqualException e) {
-            System.out.println(e.getMessage());;
-        }
-        return null;
+    protected Car createHiance(String color, Price price) throws CountryFactoryNotEqualException {
+        Factory factory = chooseFactory();
+        Wheel[] wheels = assemblyWheels(factory, Hiance.WHEEL_DIAMETER);
+        return new Hiance(color, 125, TransmissionType.AUTOMATIC_TRANSMISSION.name(),
+                wheels, factory.createGasTank(), factory.createEngine(),
+                factory.createElectrics(), factory.createHeadlights(), 25000, price, country);
     }
 
-    public Car createDyna(String color, Price price) {
-        try {
-            Factory factory = chooseFactory();
-            Wheel[] wheels = assemblyWheels(factory, Dyna.WHEEL_DIAMETER);
-            return new Dyna(color, 125, TransmissionType.AUTOMATIC_TRANSMISSION.name(),
-                    wheels, factory.createGasTank(), factory.createEngine(),
-                    factory.createElectrics(), factory.createHeadlights(), 44000, price, country);
-        } catch (CountryFactoryNotEqualException e) {
-            System.out.println(e.getMessage());;
-        }
-        return null;
+    protected Car createDyna(String color, Price price) throws CountryFactoryNotEqualException {
+        Factory factory = chooseFactory();
+        Wheel[] wheels = assemblyWheels(factory, Dyna.WHEEL_DIAMETER);
+        return new Dyna(color, 125, TransmissionType.AUTOMATIC_TRANSMISSION.name(),
+                wheels, factory.createGasTank(), factory.createEngine(),
+                factory.createElectrics(), factory.createHeadlights(), 44000, price, country);
     }
 
     private Wheel[] assemblyWheels(Factory factory, int diameter) {
@@ -99,7 +85,9 @@ public class AssemblyLine {
             return choosenFactory;
         } else {
             String wrongFactories = String.join(", ", countryNames);
-            throw new CountryFactoryNotEqualException(String.format("Не совпавшие страны: %s.", wrongFactories));
+            throw new CountryFactoryNotEqualException(
+                    String.format("В %s нет заводов с запчастями.\n" +
+                            "Существующие заводы запчастей: %s.", this.country, wrongFactories));
         }
     }
 }

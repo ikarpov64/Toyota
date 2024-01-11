@@ -1,12 +1,12 @@
 package org.javaacadmey.toyota.car.employee;
 
 import org.javaacadmey.toyota.car.Customer;
+import org.javaacadmey.toyota.car.exeptions.AssemblyRequestException;
+import org.javaacadmey.toyota.car.factory.CarAssembler;
 import org.javaacadmey.toyota.car.utils.FileWriterReport;
 import org.javaacadmey.toyota.car.cars.Price;
 import org.javaacadmey.toyota.car.cars.Car;
-import org.javaacadmey.toyota.car.cars.CarColor;
 import org.javaacadmey.toyota.car.exeptions.NoCarAvailableException;
-import org.javaacadmey.toyota.car.factory.AssemblyLine;
 import org.javaacadmey.toyota.car.warehouse.Warehouse;
 
 public class Manager {
@@ -19,7 +19,7 @@ public class Manager {
     }
 
     public Car sellCar(Customer customer, Warehouse warehouse,
-                       AssemblyLine assemblyLine) throws NoCarAvailableException {
+                       CarAssembler carAssembler) throws NoCarAvailableException {
         Car mostExpensiveCar = null;
         int customerMoney = customer.getAmountOfMoney();
         Price price = Price.getMaxCarBySellPrice(customerMoney);
@@ -38,11 +38,10 @@ public class Manager {
                         mostExpensiveCar.getPrice().getSellPrice());
             } catch (NoCarAvailableException e) {
                 try {
-                    sendRequestForAssembly(price, assemblyLine, warehouse);
-                    return sellCar(customer, warehouse, assemblyLine);
-
-                } catch (NoCarAvailableException ex) {
-                    throw new RuntimeException(ex);
+                    carAssembler.executeAssemblyRequest(price);
+                    return sellCar(customer, warehouse, carAssembler);
+                } catch (AssemblyRequestException ex) {
+                    System.out.println(ex.getMessage());
                 }
             }
         }
@@ -86,19 +85,7 @@ public class Manager {
         } else if (customerMoney >= Price.CAMRY.getSellPrice() && warehouse.camrysQty() > 0) {
             return warehouse.getCamry();
         }
-        throw new NoCarAvailableException("Нет машин в наличии");
-    }
-
-    private void sendRequestForAssembly(Price price, AssemblyLine assemblyLine, Warehouse warehouse) {
-        if (price == Price.DYNA) {
-            warehouse.addDyna(assemblyLine.createDyna(CarColor.BLACK.getColorName(), price));
-        } else if (price == Price.HIANCE) {
-            warehouse.addHiance(assemblyLine.createHiance(CarColor.BLACK.getColorName(), price));
-        } else if (price == Price.SOLARA) {
-            warehouse.addSolara(assemblyLine.createSolara(CarColor.BLACK.getColorName(), price));
-        } else {
-            warehouse.addCamry(assemblyLine.createCamry(CarColor.BLACK.getColorName(), price));
-        }
+        throw new NoCarAvailableException("Нет машин в наличии. Отправлена заявка на производство.");
     }
 
 //   private Car findMostExpensiveCar(Warehouse warehouse, int budget) {
