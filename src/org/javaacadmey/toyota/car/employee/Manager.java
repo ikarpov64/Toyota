@@ -19,7 +19,7 @@ public class Manager {
     }
 
     public Car sellCar(Customer customer, Warehouse warehouse,
-                       CarAssembler carAssembler) throws NoCarAvailableException {
+                       CarAssembler carAssembler) {
         Car mostExpensiveCar = null;
         int customerMoney = customer.getAmountOfMoney();
         Price price = Price.getMaxCarBySellPrice(customerMoney);

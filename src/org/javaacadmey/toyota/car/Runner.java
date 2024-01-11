@@ -11,7 +11,7 @@ import org.javaacadmey.toyota.car.cars.Price;
 import org.javaacadmey.toyota.car.warehouse.Warehouse;
 
 public class Runner {
-    public static void main(String[] args) throws NoCarAvailableException {
+    public static void main(String[] args) {
 
         Factory[] factories = new Factory[Countries.values().length];
         for (int i = 0; i < Countries.values().length; i++) {

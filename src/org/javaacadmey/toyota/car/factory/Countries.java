@@ -6,7 +6,7 @@ public enum Countries {
     RUSSIA("Россия"),
     USA("США");
 
-    private String name;
+    private final String name;
 
     Countries(String name) {
         this.name = name;

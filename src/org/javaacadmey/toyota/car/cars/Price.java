@@ -6,9 +6,9 @@ public enum Price {
     HIANCE("HIANCE", 15000, 10000),
     DYNA("DYNA", 22000, 12000);
 
-    private String model;
-    private int sellPrice;
-    private int costPrice;
+    private final String model;
+    private final int sellPrice;
+    private final int costPrice;
 
     Price(String model, int sellPrice, int costPrice) {
         this.model = model;

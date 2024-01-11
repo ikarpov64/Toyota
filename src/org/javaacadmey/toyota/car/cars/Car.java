@@ -6,7 +6,7 @@ import org.javaacadmey.toyota.car.exeptions.StartCarException;
 
 public abstract class Car {
     public static final int WHEEL_COUNT = 4;
-    private Countries country;
+    private final Countries country;
     private String color;
     private int maxSpeed;
     private String transmission;
@@ -54,7 +54,7 @@ public abstract class Car {
             checkElectrics();
             System.out.println("Фары включены и светят.");
         } catch (StartCarException e) {
-            System.out.printf("Невозможно включить фары. %s.\n", e.getMessage());;
+            System.out.printf("Невозможно включить фары. %s.\n", e.getMessage());
         }
     }
 

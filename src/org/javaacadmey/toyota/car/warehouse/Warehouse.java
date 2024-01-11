@@ -55,7 +55,7 @@ public class Warehouse {
                 }
                 increaseCarQty();
             } catch (NoFreeSpaceInWarehouseException e) {
-                System.out.println(e.getMessage());;
+                System.out.println(e.getMessage());
             }
         }
     }
