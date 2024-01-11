@@ -17,10 +17,7 @@ public class Runner {
         for (int i = 0; i < Countries.values().length; i++) {
             factories[i] = new Factory(Countries.values()[i]);
         }
-//        factories[0] = new Factory(Countries.USA);
-//        factories[1] = new Factory(Countries.KOREA);
-//        factories[2] = new Factory(Countries.RUSSIA);
-//        factories[3] = new Factory(Countries.USA);
+
         AssemblyLine assemblyLine = new AssemblyLine(Countries.JAPAN, factories);
         Warehouse warehouse = new Warehouse();
         CarAssembler carAssembler = new CarAssembler(assemblyLine, warehouse);
@@ -49,7 +46,7 @@ public class Runner {
         cashier.addIncome(manager.sellCar(customer6, warehouse, carAssembler));
         cashier.addIncome(manager.sellCar(customer7, warehouse, carAssembler));
         cashier.addIncome(manager.sellCar(customer8, warehouse, carAssembler));
-        System.out.println("Сумма продаж: " + cashier.incomeSum());
+        System.out.println("Сумма продаж: " + cashier.getIncomeSum());
         manager.generateReport();
     }
 }

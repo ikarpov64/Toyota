@@ -14,7 +14,7 @@ public class Cashier {
         }
     }
 
-    public int incomeSum() {
+    public int getIncomeSum() {
         int sum = 0;
         for (Car car : income) {
             sum += car.getPrice().getSellPrice();

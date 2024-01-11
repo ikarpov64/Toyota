@@ -11,12 +11,9 @@ import org.javaacadmey.toyota.car.cars.models.Solara;
 import org.javaacadmey.toyota.car.exeptions.CountryFactoryNotEqualException;
 
 public class AssemblyLine {
-    private Countries country;
+    private final Countries country;
     private Factory[] factories;
 
-    public Countries getCountry() {
-        return country;
-    }
 
     public Factory[] getFactories() {
         return factories;
@@ -90,4 +87,9 @@ public class AssemblyLine {
                             "Существующие заводы запчастей: %s.", this.country, wrongFactories));
         }
     }
+
+    public Countries getCountry() {
+        return country;
+    }
+
 }

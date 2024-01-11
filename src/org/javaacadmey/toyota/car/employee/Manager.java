@@ -55,7 +55,6 @@ public class Manager {
 
     public void generateReport() {
         FileWriterReport fileWriterReport = new FileWriterReport();
-
         double income = 0;
         double outcome = 0;
         StringBuilder reportText = new StringBuilder();
@@ -87,26 +86,4 @@ public class Manager {
         }
         throw new NoCarAvailableException("Нет машин в наличии. Отправлена заявка на производство.");
     }
-
-//   private Car findMostExpensiveCar(Warehouse warehouse, int budget) {
-//        Car mostExpensiveCar = null;
-//        if (warehouse.getCarQty() == 0) {
-//            return mostExpensiveCar;
-//        }
-//
-//        Car[][] cars = {
-//                warehouse.getSolaras(), warehouse.getCamrys(),
-//                warehouse.getDynas(), warehouse.getHiances()};
-//
-//        for (Car[] models : cars) {
-//            for (Car car : models) {
-//                if (car.getPrice().getSellPrice() <= budget &&
-//                        (mostExpensiveCar == null ||
-//                                car.getPrice().getSellPrice() > mostExpensiveCar.getPrice().getSellPrice())) {
-//                    mostExpensiveCar = car;
-//                }
-//            }
-//        }
-//        return mostExpensiveCar;
-//    }
 }
