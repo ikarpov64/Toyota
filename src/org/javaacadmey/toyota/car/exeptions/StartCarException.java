@@ -6,7 +6,7 @@ public class StartCarException extends Exception {
     public StartCarException(String message) {
         super(message);
         FileWriterReport fileWriterReport = new FileWriterReport();
-        fileWriterReport.writeReportToFile(message, "error");
+        fileWriterReport.writeReportToFile(message, "exception");
     }
 
 

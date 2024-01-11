@@ -6,6 +6,6 @@ public class NoCarAvailableException extends Exception{
     public NoCarAvailableException(String message) {
         super(message);
         FileWriterReport fileWriterReport = new FileWriterReport();
-        fileWriterReport.writeReportToFile(message, "error");
+        fileWriterReport.writeReportToFile(message, "exception");
     }
 }
