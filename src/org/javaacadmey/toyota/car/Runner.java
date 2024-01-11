@@ -13,9 +13,13 @@ public class Runner {
     public static void main(String[] args) throws NoCarAvailableException {
 
         Factory[] factories = new Factory[Countries.values().length];
-        for (int i = 0; i < Countries.values().length; i++) {
-            factories[i] = new Factory(Countries.values()[i]);
-        }
+//        for (int i = 0; i < Countries.values().length; i++) {
+//            factories[i] = new Factory(Countries.values()[i]);
+//        }
+        factories[0] = new Factory(Countries.USA);
+        factories[1] = new Factory(Countries.KOREA);
+        factories[2] = new Factory(Countries.RUSSIA);
+        factories[3] = new Factory(Countries.USA);
         AssemblyLine assemblyLine = new AssemblyLine(Countries.JAPAN, factories);
         Warehouse warehouse = new Warehouse();
 

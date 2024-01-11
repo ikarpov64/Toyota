@@ -37,8 +37,13 @@ public class Manager {
                         mostExpensiveCar.getPrice().getModel(),
                         mostExpensiveCar.getPrice().getSellPrice());
             } catch (NoCarAvailableException e) {
-                sendRequestForAssembly(price, assemblyLine, warehouse);
-                return sellCar(customer, warehouse, assemblyLine);
+                try {
+                    sendRequestForAssembly(price, assemblyLine, warehouse);
+                    return sellCar(customer, warehouse, assemblyLine);
+
+                } catch (NoCarAvailableException ex) {
+                    throw new RuntimeException(ex);
+                }
             }
         }
 
@@ -86,7 +91,7 @@ public class Manager {
 
     private void sendRequestForAssembly(Price price, AssemblyLine assemblyLine, Warehouse warehouse) {
         if (price == Price.DYNA) {
-             warehouse.addDyna(assemblyLine.createDyna(CarColor.BLACK.getColorName(), price));
+            warehouse.addDyna(assemblyLine.createDyna(CarColor.BLACK.getColorName(), price));
         } else if (price == Price.HIANCE) {
             warehouse.addHiance(assemblyLine.createHiance(CarColor.BLACK.getColorName(), price));
         } else if (price == Price.SOLARA) {

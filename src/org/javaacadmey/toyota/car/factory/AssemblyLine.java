@@ -82,7 +82,8 @@ public class AssemblyLine {
 
     private Factory chooseFactory() throws CountryFactoryNotEqualException {
         Factory choosenFactory = null;
-        String wrongFactories = "";
+        String[] countryNames = new String[factories.length];
+        int indexCountryNames = 0;
         for (Factory factory : factories) {
             if (factory == null) {
                 continue;
@@ -91,12 +92,13 @@ public class AssemblyLine {
             if (factory.getCountry().equals(this.country)) {
                 choosenFactory = factory;
             } else {
-                wrongFactories = String.join(", ", factory.getCountry().getName());
+                countryNames[indexCountryNames++] = factory.getCountry().getName();
             }
         }
         if (choosenFactory != null) {
             return choosenFactory;
         } else {
+            String wrongFactories = String.join(", ", countryNames);
             throw new CountryFactoryNotEqualException(String.format("Не совпавшие страны: %s.", wrongFactories));
         }
     }
