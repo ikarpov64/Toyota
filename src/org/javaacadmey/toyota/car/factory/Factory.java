@@ -1,10 +1,9 @@
 package org.javaacadmey.toyota.car.factory;
 
-import org.javaacadmey.toyota.car.Countries;
 import org.javaacadmey.toyota.car.cars.components.*;
 
 public class Factory {
-    Countries country;
+    private Countries country;
 
     public Factory(Countries country) {
         this.country = country;

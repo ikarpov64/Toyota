@@ -1,4 +1,4 @@
-package org.javaacadmey.toyota.car;
+package org.javaacadmey.toyota.car.factory;
 
 public enum Countries {
     JAPAN("Япония"),

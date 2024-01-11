@@ -1,7 +1,7 @@
 package org.javaacadmey.toyota.car.cars.models;
 
-import org.javaacadmey.toyota.car.Countries;
-import org.javaacadmey.toyota.car.Price;
+import org.javaacadmey.toyota.car.factory.Countries;
+import org.javaacadmey.toyota.car.cars.Price;
 import org.javaacadmey.toyota.car.cars.components.*;
 import org.javaacadmey.toyota.car.cars.types.Cargo;
 
@@ -12,7 +12,6 @@ public class Dyna extends Cargo {
     public Dyna(String color,
                 int maxSpeed,
                 String transmission,
-                boolean isMoving,
                 Wheel[] wheels,
                 GasTank gasTank,
                 Engine engine,
@@ -22,14 +21,14 @@ public class Dyna extends Cargo {
                 Price price,
                 Countries country) {
         super(color, maxSpeed, transmission,
-                isMoving, wheels, gasTank,
+                wheels, gasTank,
                 engine, electrics, headlights,
                 loadCapacity, price, country);
     }
 
 
     public void chargePhone() {
-        System.out.println("Телефон заряжается");
+        System.out.println("Телефон заряжается.");
     }
 
 }

@@ -1,7 +1,6 @@
 package org.javaacadmey.toyota.car.factory;
 
-import org.javaacadmey.toyota.car.Countries;
-import org.javaacadmey.toyota.car.Price;
+import org.javaacadmey.toyota.car.cars.Price;
 import org.javaacadmey.toyota.car.cars.Car;
 import org.javaacadmey.toyota.car.cars.components.TransmissionType;
 import org.javaacadmey.toyota.car.cars.components.Wheel;
@@ -25,7 +24,7 @@ public class AssemblyLine {
             Factory factory = chooseFactory();
             Wheel[] wheels = assemblyWheels(factory, Camry.WHEEL_DIAMETER);
             return new Camry(color, 125, TransmissionType.AUTOMATIC_TRANSMISSION.name(),
-                    false, wheels, factory.createGasTank(), factory.createEngine(),
+                    wheels, factory.createGasTank(), factory.createEngine(),
                     factory.createElectrics(), factory.createHeadlights(), true, price, country);
 
         } catch (CountryFactoryNotEqualException e) {
@@ -39,7 +38,7 @@ public class AssemblyLine {
             Factory factory = chooseFactory();
             Wheel[] wheels = assemblyWheels(factory, Solara.WHEEL_DIAMETER);
             return new Solara(color, 125, TransmissionType.AUTOMATIC_TRANSMISSION.name(),
-                    false, wheels, factory.createGasTank(), factory.createEngine(),
+                    wheels, factory.createGasTank(), factory.createEngine(),
                     factory.createElectrics(), factory.createHeadlights(), true, price, country);
         } catch (CountryFactoryNotEqualException e) {
             System.out.println(e.getMessage());;
@@ -52,7 +51,7 @@ public class AssemblyLine {
             Factory factory = chooseFactory();
             Wheel[] wheels = assemblyWheels(factory, Hiance.WHEEL_DIAMETER);
             return new Hiance(color, 125, TransmissionType.AUTOMATIC_TRANSMISSION.name(),
-                    false, wheels, factory.createGasTank(), factory.createEngine(),
+                    wheels, factory.createGasTank(), factory.createEngine(),
                     factory.createElectrics(), factory.createHeadlights(), 25000, price, country);
         } catch (CountryFactoryNotEqualException e) {
             System.out.println(e.getMessage());;
@@ -65,7 +64,7 @@ public class AssemblyLine {
             Factory factory = chooseFactory();
             Wheel[] wheels = assemblyWheels(factory, Dyna.WHEEL_DIAMETER);
             return new Dyna(color, 125, TransmissionType.AUTOMATIC_TRANSMISSION.name(),
-                    false, wheels, factory.createGasTank(), factory.createEngine(),
+                    wheels, factory.createGasTank(), factory.createEngine(),
                     factory.createElectrics(), factory.createHeadlights(), 44000, price, country);
         } catch (CountryFactoryNotEqualException e) {
             System.out.println(e.getMessage());;

@@ -1,8 +1,8 @@
 package org.javaacadmey.toyota.car.cars.types;
 
 
-import org.javaacadmey.toyota.car.Countries;
-import org.javaacadmey.toyota.car.Price;
+import org.javaacadmey.toyota.car.factory.Countries;
+import org.javaacadmey.toyota.car.cars.Price;
 import org.javaacadmey.toyota.car.cars.components.*;
 
 public abstract class Cabriolet extends Passenger {
@@ -11,7 +11,6 @@ public abstract class Cabriolet extends Passenger {
     public Cabriolet(String color,
                      int maxSpeed,
                      String transmission,
-                     boolean isMoving,
                      Wheel[] wheels,
                      GasTank gasTank,
                      Engine engine,
@@ -20,8 +19,7 @@ public abstract class Cabriolet extends Passenger {
                      boolean hasCruise,
                      Price price,
                      Countries country) {
-        super(color, maxSpeed, transmission,
-                isMoving, wheels, gasTank,
+        super(color, maxSpeed, transmission, wheels, gasTank,
                 engine, electrics, headlights,
                 hasCruise, price, country);
         this.roofOpen = false;

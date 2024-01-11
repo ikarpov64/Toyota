@@ -1,6 +1,7 @@
 package org.javaacadmey.toyota.car.warehouse;
 
 import org.javaacadmey.toyota.car.cars.Car;
+import org.javaacadmey.toyota.car.cars.Price;
 import org.javaacadmey.toyota.car.cars.models.Camry;
 import org.javaacadmey.toyota.car.cars.models.Dyna;
 import org.javaacadmey.toyota.car.cars.models.Hiance;
@@ -20,54 +21,42 @@ public class Warehouse {
     private Car[] solaras = new Solara[0];
 
     public void addCamry(Car camry) {
-        try {
-            checkFreeSpace();
-            if (camry != null) {
-                this.camrys = increaseArray(this.camrys, this.camrys.length + 1);
-                this.camrys[this.camrys.length - 1] = camry;
-                increaseCarQty();
-            }
-        } catch (NoFreeSpaceInWarehouseException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public void addDyna(Car dynas) {
-        try {
-            checkFreeSpace();
-            if (dynas != null) {
-                this.dynas = increaseArray(this.dynas, this.dynas.length + 1);
-                this.dynas[this.dynas.length - 1] = dynas;
-                increaseCarQty();
-            }
-        } catch (NoFreeSpaceInWarehouseException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public void addHiance(Car hiance) {
-        try {
-            checkFreeSpace();
-            if (hiance != null) {
-                this.hiances = increaseArray(this.hiances, this.hiances.length + 1);
-                this.hiances[this.hiances.length - 1] = hiance;
-                increaseCarQty();
-            }
-        } catch (NoFreeSpaceInWarehouseException e) {
-            System.out.println(e.getMessage());
-        }
+        addCarToWarehouse(camry);
     }
 
     public void addSolara(Car solara) {
-        try {
-            checkFreeSpace();
-            if (solara != null) {
-                this.solaras = increaseArray(this.solaras, this.solaras.length + 1);
-                this.solaras[this.solaras.length - 1] = solara;
+        addCarToWarehouse(solara);
+    }
+
+    public void addDyna(Car dynas) {
+        addCarToWarehouse(dynas);
+    }
+
+    public void addHiance(Car hiance) {
+        addCarToWarehouse(hiance);
+    }
+
+    private void addCarToWarehouse(Car car) {
+        if (car != null) {
+            try {
+                checkFreeSpace();
+                if (car.getPrice().getModel().equals(Price.CAMRY.getModel())) {
+                    this.camrys = increaseArray(this.camrys, this.camrys.length + 1);
+                    this.camrys[this.camrys.length - 1] = car;
+                } else if (car.getPrice().getModel().equals(Price.SOLARA.getModel())) {
+                    this.solaras = increaseArray(this.solaras, this.solaras.length + 1);
+                    this.solaras[this.solaras.length - 1] = car;
+                } else if (car.getPrice().getModel().equals(Price.DYNA.getModel())) {
+                    this.dynas = increaseArray(this.dynas, this.dynas.length + 1);
+                    this.dynas[this.dynas.length - 1] = car;
+                } else if (car.getPrice().getModel().equals(Price.HIANCE.getModel())) {
+                    this.hiances = increaseArray(this.hiances, this.hiances.length + 1);
+                    this.hiances[this.hiances.length - 1] = car;
+                }
                 increaseCarQty();
+            } catch (NoFreeSpaceInWarehouseException e) {
+                System.out.println(e.getMessage());;
             }
-        } catch (NoFreeSpaceInWarehouseException e) {
-            System.out.println(e.getMessage());
         }
     }
 
@@ -157,21 +146,5 @@ public class Warehouse {
     }
     public int solarasQty() {
         return this.solaras.length;
-    }
-
-    public Car[] getSolaras() {
-        return solaras;
-    }
-
-    public Car[] getCamrys() {
-        return camrys;
-    }
-
-    public Car[] getDynas() {
-        return dynas;
-    }
-
-    public Car[] getHiances() {
-        return hiances;
     }
 }

@@ -7,5 +7,7 @@ public class GasTank {
         return gasQty;
     }
 
-
+    public void setGasQty(int gasQty) {
+        this.gasQty = gasQty;
+    }
 }

@@ -1,4 +1,4 @@
-package org.javaacadmey.toyota.car;
+package org.javaacadmey.toyota.car.employee;
 
 import org.javaacadmey.toyota.car.cars.Car;
 
@@ -16,7 +16,10 @@ public class Report {
         if (car != null) {
             cars = Arrays.copyOf(cars, cars.length + 1);
             cars[cars.length - 1] = car;
-            System.out.println(cars.length);
         }
+    }
+
+    public Car[] getCars() {
+        return cars;
     }
 }

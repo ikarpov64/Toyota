@@ -1,7 +1,7 @@
 package org.javaacadmey.toyota.car.cars.models;
 
-import org.javaacadmey.toyota.car.Countries;
-import org.javaacadmey.toyota.car.Price;
+import org.javaacadmey.toyota.car.factory.Countries;
+import org.javaacadmey.toyota.car.cars.Price;
 import org.javaacadmey.toyota.car.cars.components.*;
 import org.javaacadmey.toyota.car.cars.types.Passenger;
 
@@ -12,7 +12,6 @@ public class Camry extends Passenger {
     public Camry(String color,
                  int maxSpeed,
                  String transmission,
-                 boolean isMoving,
                  Wheel[] wheels,
                  GasTank gasTank,
                  Engine engine,
@@ -22,7 +21,7 @@ public class Camry extends Passenger {
                  Price price,
                  Countries country) {
         super(color, maxSpeed, transmission,
-                isMoving, wheels, gasTank, engine,
+                wheels, gasTank, engine,
                 electrics, headlights, hasCruise,
                 price, country);
     }

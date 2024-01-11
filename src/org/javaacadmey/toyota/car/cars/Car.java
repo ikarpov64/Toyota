@@ -1,7 +1,6 @@
 package org.javaacadmey.toyota.car.cars;
 
-import org.javaacadmey.toyota.car.Countries;
-import org.javaacadmey.toyota.car.Price;
+import org.javaacadmey.toyota.car.factory.Countries;
 import org.javaacadmey.toyota.car.cars.components.*;
 import org.javaacadmey.toyota.car.exeptions.StartCarException;
 
@@ -11,7 +10,7 @@ public abstract class Car {
     private String color;
     private int maxSpeed;
     private String transmission;
-    private boolean isMoving;
+    private boolean isMoving = false;
     private Price price;
     private Wheel[] wheels;
     private GasTank gasTank;
@@ -20,13 +19,12 @@ public abstract class Car {
     private Headlights headlights;
 
     public Car(String color, int maxSpeed,
-               String transmission, boolean isMoving,
+               String transmission,
                Wheel[] wheels, GasTank gasTank,
                Engine engine, Electrics electrics, Headlights headlights, Price price, Countries country) {
         this.color = color;
         this.maxSpeed = maxSpeed;
         this.transmission = transmission;
-        this.isMoving = isMoving;
         this.wheels = wheels;
         this.gasTank = gasTank;
         this.engine = engine;
@@ -39,21 +37,25 @@ public abstract class Car {
     public void startMoving() {
         try {
             checkComponents();
+            this.isMoving = true;
+            System.out.println("Компоненты в рабочем состоянии. Автомобиль запущен и едет.");
         } catch (StartCarException e) {
-            System.out.println(e.getMessage());
+            System.out.println(e.getMessage() + " Движение невозможно.");
         }
-
-        this.isMoving = true;
-        System.out.println("Тачка едет.");
     }
 
     public void stopMoving() {
         this.isMoving = false;
-        System.out.println("Тачка не едет.");
+        System.out.println("Автомобиль остановлен.");
     }
 
     public void turnHeadlights() {
-        System.out.println("Фары включены.");
+        try {
+            checkElectrics();
+            System.out.println("Фары включены и светят.");
+        } catch (StartCarException e) {
+            System.out.printf("Невозможно включить фары. %s.\n", e.getMessage());;
+        }
     }
 
     private void checkComponents() throws StartCarException {
@@ -66,28 +68,28 @@ public abstract class Car {
     private void checkWheels() throws StartCarException {
         for (Wheel wheel : this.wheels) {
             if (wheel == null) {
-                throw new StartCarException("Нет колеса");
+                throw new StartCarException("У автомобиля отсутствует колесо.");
             } else if (wheel.isPunctured()) {
-                throw new StartCarException("Колесо проколото");
+                throw new StartCarException("У автомобиля проколото колесо.");
             }
         }
     }
 
     private void checkGas() throws StartCarException {
         if (this.gasTank.getGasQty() == 0) {
-            throw new StartCarException("Нет бензина");
+            throw new StartCarException("Бак пуст.");
         }
     }
 
     private void checkEngine() throws StartCarException {
         if (!this.engine.isWorked()) {
-            throw new StartCarException("Двигатель не але");
+            throw new StartCarException("Двигатель не работает.");
         }
     }
 
     private void checkElectrics() throws StartCarException {
         if (!this.electrics.isWorked()) {
-            throw new StartCarException("Электрика не але");
+            throw new StartCarException("Электрика не работает.");
         }
     }
 

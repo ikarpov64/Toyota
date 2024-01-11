@@ -1,4 +1,4 @@
-package org.javaacadmey.toyota.car;
+package org.javaacadmey.toyota.car.cars;
 
 public enum Price {
     CAMRY("CAMRY",10000, 5000),
