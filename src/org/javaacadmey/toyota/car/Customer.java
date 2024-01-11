@@ -2,7 +2,7 @@ package org.javaacadmey.toyota.car;
 
 public class Customer {
     private final String name;
-    private int amountOfMoney;
+    private double amountOfMoney;
 
     public Customer(String name, int amountOfMoney) {
         this.name = name;
@@ -13,11 +13,11 @@ public class Customer {
         return name;
     }
 
-    public int getAmountOfMoney() {
+    public double getAmountOfMoney() {
         return amountOfMoney;
     }
 
-    public void reduceAmountOfMoney(int amountOfMoney) {
+    public void reduceAmountOfMoney(double amountOfMoney) {
         this.amountOfMoney -= amountOfMoney;
     }
 }

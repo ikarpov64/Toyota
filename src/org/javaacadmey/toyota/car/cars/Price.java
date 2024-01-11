@@ -7,7 +7,7 @@ public enum Price {
     DYNA("DYNA", 22000, 12000);
 
     private final String model;
-    private final int sellPrice;
+    private final double sellPrice;
     private final int costPrice;
 
     Price(String model, int sellPrice, int costPrice) {
@@ -16,7 +16,7 @@ public enum Price {
         this.costPrice = costPrice;
     }
 
-    public int getSellPrice() {
+    public double getSellPrice() {
         return sellPrice;
     }
 
@@ -28,7 +28,7 @@ public enum Price {
         return model;
     }
 
-    public static Price getMaxCarBySellPrice(int maxBudget) {
+    public static Price getMaxCarBySellPrice(double maxBudget) {
         Price[] values = values();
         Price maxCar = null;
 

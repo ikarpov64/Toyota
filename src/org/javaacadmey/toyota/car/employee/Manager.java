@@ -21,7 +21,7 @@ public class Manager {
     public Car sellCar(Customer customer, Warehouse warehouse,
                        CarAssembler carAssembler) {
         Car mostExpensiveCar = null;
-        int customerMoney = customer.getAmountOfMoney();
+        double customerMoney = customer.getAmountOfMoney();
         Price price = Price.getMaxCarBySellPrice(customerMoney);
 
         if (price == null) {
@@ -74,7 +74,7 @@ public class Manager {
         fileWriterReport.writeReportToFile(reportText.toString(), this.name);
     }
 
-    private Car mostExpensiveCar(int customerMoney, Warehouse warehouse) throws NoCarAvailableException {
+    private Car mostExpensiveCar(double customerMoney, Warehouse warehouse) throws NoCarAvailableException {
         if (customerMoney >= Price.DYNA.getSellPrice() && warehouse.dynasQty() > 0) {
             return warehouse.getDyna();
         } else if (customerMoney >= Price.HIANCE.getSellPrice() && warehouse.hiancesQty() > 0) {
